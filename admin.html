@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Tunas Gurindam Corps</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #3730a3 50%,
+          #581c87 100%
+        );
+        background-attachment: fixed;
+        color: white;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .header p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .nav-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        border: none;
+        cursor: pointer;
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+      }
+
+      .form-section,
+      .list-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 25px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-section h2,
+      .list-section h2 {
+        color: #fbbf24;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input[type="date"],
+      .form-group input[type="time"] {
+        color-scheme: dark;
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: #fbbf24;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr auto;
+        gap: 15px;
+        align-items: end;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
+      }
+
+      .btn-danger {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+      }
+
+      .btn-danger:hover {
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        box-shadow: 0 4px 15px rgba(107, 114, 128, 0.4);
+      }
+
+      .btn-secondary:hover {
+        box-shadow: 0 6px 20px rgba(107, 114, 128, 0.6);
+      }
+
+      .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .student-table th,
+      .student-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .student-table th {
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 700;
+        color: #fbbf24;
+      }
+
+      .student-table tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .status-passed {
+        color: #22c55e;
+        font-weight: 600;
+      }
+
+      .status-failed {
+        color: #ef4444;
+        font-weight: 600;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-small {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+      }
+
+      .alert {
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .alert-success {
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #86efac;
+      }
+
+      .alert-error {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* Large desktop screens */
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1600px;
+          padding: 30px;
+        }
+
+        .header h1 {
+          font-size: 3rem;
+        }
+
+        .form-section,
+        .list-section {
+          padding: 30px;
+        }
+      }
+
+      /* Medium desktop screens */
+      @media (min-width: 1200px) and (max-width: 1399px) {
+        .container {
+          max-width: 1300px;
+          padding: 25px;
+        }
+
+        .header h1 {
+          font-size: 2.8rem;
+        }
+      }
+
+      /* Small desktop/tablet screens */
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .container {
+          max-width: 1100px;
+          padding: 25px;
+        }
+
+        .header h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      /* Tablet screens */
+      @media (min-width: 768px) and (max-width: 991px) {
+        .container {
+          max-width: 95%;
+          padding: 20px;
+          margin: 15px;
+        }
+
+        .header h1 {
+          font-size: 2.2rem;
+        }
+
+        .form-section,
+        .list-section {
+          padding: 20px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+      }
+
+      /* Mobile landscape */
+      @media (max-width: 767px) and (orientation: landscape) {
+        .container {
+          padding: 15px;
+          margin: 10px;
+        }
+
+        .header h1 {
+          font-size: 1.8rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .nav-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .nav-btn {
+          text-align: center;
+          font-size: 0.9rem;
+        }
+
+        .student-table {
+          font-size: 0.85rem;
+        }
+
+        .student-table th,
+        .student-table td {
+          padding: 8px;
+        }
+      }
+
+      /* Mobile portrait */
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+          margin: 10px;
+        }
+
+        .header h1 {
+          font-size: 1.8rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .nav-buttons {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .nav-btn {
+          text-align: center;
+          font-size: 0.9rem;
+        }
+
+        .student-table {
+          font-size: 0.8rem;
+        }
+
+        .student-table th,
+        .student-table td {
+          padding: 6px;
+        }
+
+        .form-section,
+        .list-section {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Music -->
+    <audio id="bg-music" autoplay loop preload="auto" style="display: none">
+      <source src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+      <div class="header">
+        <h1>🔧 Admin Panel</h1>
+        <p>Kelola Data Siswa Tunas Gurindam Corps</p>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="TUNAS GURINDAM.html" class="nav-btn">🏠 Kembali ke Beranda</a>
+        <a href="cek-kelulusan.html" class="nav-btn">🎓 Cek Kelulusan</a>
+      </div>
+
+      <!-- Quick Access Commands -->
+      <div
+        class="form-section"
+        style="
+          background: linear-gradient(
+            135deg,
+            rgba(220, 38, 38, 0.1) 0%,
+            rgba(255, 255, 255, 0.08) 100%
+          );
+          border: 2px solid rgba(220, 38, 38, 0.3);
+        "
+      >
+        <h2 style="color: #dc2626">⚡ ADMIN COMMAND CENTER</h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+          "
+        >
+          <div
+            style="
+              background: rgba(34, 197, 94, 0.1);
+              border: 2px solid rgba(34, 197, 94, 0.3);
+              border-radius: 12px;
+              padding: 15px;
+              text-align: center;
+            "
+          >
+            <div style="font-size: 2rem; margin-bottom: 10px">📊</div>
+            <h3 style="color: #22c55e; margin-bottom: 8px; font-size: 1rem">
+              Excel Upload
+            </h3>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.85rem;
+                margin: 0;
+              "
+            >
+              Upload data siswa massal via Excel
+            </p>
+            <div style="margin-top: 10px">
+              <span
+                style="
+                  background: rgba(34, 197, 94, 0.2);
+                  color: #22c55e;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75rem;
+                "
+                >✅ Aktif</span
+              >
+            </div>
+          </div>
+
+          <div
+            style="
+              background: rgba(251, 191, 36, 0.1);
+              border: 2px solid rgba(251, 191, 36, 0.3);
+              border-radius: 12px;
+              padding: 15px;
+              text-align: center;
+            "
+          >
+            <div style="font-size: 2rem; margin-bottom: 10px">⏰</div>
+            <h3 style="color: #fbbf24; margin-bottom: 8px; font-size: 1rem">
+              Set Waktu Kelulusan
+            </h3>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.85rem;
+                margin: 0;
+              "
+            >
+              Atur waktu pengumuman kelulusan
+            </p>
+            <div style="margin-top: 10px">
+              <span
+                style="
+                  background: rgba(251, 191, 36, 0.2);
+                  color: #fbbf24;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75rem;
+                "
+                >✅ Aktif</span
+              >
+            </div>
+          </div>
+
+          <div
+            style="
+              background: rgba(139, 92, 246, 0.1);
+              border: 2px solid rgba(139, 92, 246, 0.3);
+              border-radius: 12px;
+              padding: 15px;
+              text-align: center;
+            "
+          >
+            <div style="font-size: 2rem; margin-bottom: 10px">👥</div>
+            <h3 style="color: #8b5cf6; margin-bottom: 8px; font-size: 1rem">
+              Manual Add
+            </h3>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.85rem;
+                margin: 0;
+              "
+            >
+              Tambah siswa satu per satu
+            </p>
+            <div style="margin-top: 10px">
+              <span
+                style="
+                  background: rgba(139, 92, 246, 0.2);
+                  color: #8b5cf6;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75rem;
+                "
+                >➕ Add Student</span
+              >
+            </div>
+          </div>
+
+          <div
+            style="
+              background: rgba(239, 68, 68, 0.1);
+              border: 2px solid rgba(239, 68, 68, 0.3);
+              border-radius: 12px;
+              padding: 15px;
+              text-align: center;
+            "
+          >
+            <div style="font-size: 2rem; margin-bottom: 10px">⚡</div>
+            <h3 style="color: #ef4444; margin-bottom: 8px; font-size: 1rem">
+              Quick Commands
+            </h3>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.85rem;
+                margin: 0;
+              "
+            >
+              Ubah status siswa dengan cepat
+            </p>
+            <div style="margin-top: 10px">
+              <span
+                style="
+                  background: rgba(239, 68, 68, 0.2);
+                  color: #ef4444;
+                  padding: 4px 8px;
+                  border-radius: 12px;
+                  font-size: 0.75rem;
+                "
+                >🔄 Change Status</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="alert" class="alert hidden"></div>
+
+      <div class="form-section">
+        <h2>📊 Upload Excel - Tambah Siswa Massal</h2>
+        <div style="margin-bottom: 20px">
+          <a
+            href="#"
+            id="download-template"
+            class="btn"
+            style="
+              background: linear-gradient(135deg, #059669 0%, #047857 100%);
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            📥 Download Format Excel
+          </a>
+          <a
+            href="#"
+            id="export-current-data"
+            class="btn"
+            style="
+              background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+            "
+          >
+            💾 Export Data Saat Ini
+          </a>
+        </div>
+
+        <div style="margin-bottom: 20px">
+          <label
+            for="excel-file"
+            style="
+              display: block;
+              margin-bottom: 10px;
+              font-weight: 600;
+              color: rgba(255, 255, 255, 0.9);
+            "
+            >📤 Pilih File Excel:</label
+          >
+          <input
+            type="file"
+            id="excel-file"
+            accept=".xlsx,.xls,.csv"
+            style="margin-bottom: 10px"
+          />
+          <div
+            id="file-name-display"
+            style="
+              font-size: 0.9rem;
+              color: rgba(255, 255, 255, 0.7);
+              margin-bottom: 10px;
+            "
+          >
+            Belum ada file dipilih
+          </div>
+          <button
+            type="button"
+            id="upload-btn"
+            class="btn"
+            disabled
+            style="
+              background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            "
+          >
+            ⬆️ Upload Data
+          </button>
+        </div>
+
+        <div
+          style="
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          "
+        >
+          <h4 style="color: #fbbf24; margin-bottom: 10px; font-size: 0.9rem">
+            📋 Format Excel yang Diperlukan:
+          </h4>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+              gap: 10px;
+              font-size: 0.8rem;
+            "
+          >
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 8px;
+                border-radius: 5px;
+                text-align: center;
+              "
+            >
+              <strong style="color: #fbbf24">Kolom A</strong><br />
+              <span style="color: rgba(255, 255, 255, 0.8)">ID Siswa</span>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 8px;
+                border-radius: 5px;
+                text-align: center;
+              "
+            >
+              <strong style="color: #fbbf24">Kolom B</strong><br />
+              <span style="color: rgba(255, 255, 255, 0.8)">Nama Lengkap</span>
+            </div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                padding: 8px;
+                border-radius: 5px;
+                text-align: center;
+              "
+            >
+              <strong style="color: #fbbf24">Kolom C</strong><br />
+              <span style="color: rgba(255, 255, 255, 0.8)"
+                >Status (LULUS/TIDAK LULUS)</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+          "
+        >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              font-size: 0.85rem;
+            "
+          >
+            <span style="color: #22c55e; font-weight: 600"
+              >💾 AUTO-SAVE AKTIF:</span
+            >
+            <span style="color: rgba(255, 255, 255, 0.9)"
+              >Semua perubahan data otomatis tersimpan di browser</span
+            >
+          </div>
+          <div
+            style="
+              margin-top: 5px;
+              font-size: 0.75rem;
+              color: rgba(255, 255, 255, 0.7);
+            "
+          >
+            ✅ Data tersimpan di localStorage browser<br />
+            ✅ Aman untuk hosting dengan data terbaru<br />
+            ✅ Data tetap ada meski browser ditutup
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>➕ Tambah Siswa Manual</h2>
+        <form id="add-student-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="student-id">ID Siswa:</label>
+              <input
+                type="text"
+                id="student-id"
+                placeholder="Contoh: TGC00016"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="student-name">Nama Lengkap:</label>
+              <input
+                type="text"
+                id="student-name"
+                placeholder="Contoh: BUDI SANTOSO"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="student-status">Status:</label>
+              <select id="student-status" required>
+                <option value="">Pilih Status</option>
+                <option value="LULUS">LULUS</option>
+                <option value="TIDAK LULUS">TIDAK LULUS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn">➕ Tambah</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h2>⏰ Set Waktu Kelulusan</h2>
+        <form id="time-setting-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="announcement-date">Tanggal Pengumuman:</label>
+              <input type="date" id="announcement-date" required />
+            </div>
+            <div class="form-group">
+              <label for="announcement-time">Waktu Pengumuman:</label>
+              <input type="time" id="announcement-time" required />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn">💾 Simpan Waktu</button>
+            </div>
+          </div>
+        </form>
+        <div
+          style="
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+          "
+        >
+          <strong>📅 Waktu Pengumuman Saat Ini:</strong>
+          <div
+            id="current-time-display"
+            style="
+              margin-top: 10px;
+              padding: 10px;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 8px;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+            "
+          >
+            Belum diatur
+          </div>
+          <div style="margin-top: 10px">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="clearAnnouncementTime()"
+              style="font-size: 0.8rem; padding: 8px 16px"
+            >
+              🗑️ Hapus Waktu
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>⚡ Command Status Siswa</h2>
+        <form id="command-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="command-student">Nama/ID Siswa:</label>
+              <input
+                type="text"
+                id="command-student"
+                placeholder="Contoh: AHMAD atau TGC00001"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="command-status">Command:</label>
+              <select id="command-status" required>
+                <option value="">Pilih Command</option>
+                <option value="LULUS">LULUS</option>
+                <option value="TIDAK LULUS">TIDAK LULUS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn">⚡ Execute Command</button>
+            </div>
+          </div>
+        </form>
+        <div
+          style="
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+          "
+        >
+          <strong>📝 Contoh Command:</strong><br />
+          • Masukkan "AHMAD" + pilih "LULUS" → Status AHMAD akan diubah menjadi
+          LULUS<br />
+          • Masukkan "TGC00003" + pilih "TIDAK LULUS" → Status siswa dengan ID
+          TGC00003 akan diubah menjadi TIDAK LULUS
+        </div>
+      </div>
+
+      <div class="form-section hidden" id="edit-section">
+        <h2>✏️ Edit Siswa</h2>
+        <form id="edit-student-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-student-id">ID Siswa:</label>
+              <input type="text" id="edit-student-id" readonly />
+            </div>
+            <div class="form-group">
+              <label for="edit-student-name">Nama Lengkap:</label>
+              <input type="text" id="edit-student-name" required />
+            </div>
+            <div class="form-group">
+              <label for="edit-student-status">Status:</label>
+              <select id="edit-student-status" required>
+                <option value="LULUS">LULUS</option>
+                <option value="TIDAK LULUS">TIDAK LULUS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn">💾 Simpan</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="cancelEdit()"
+              >
+                ❌ Batal
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="list-section">
+        <h2>📊 Ringkasan Status</h2>
+        <div
+          id="status-summary"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+          "
+        >
+          <div
+            style="
+              background: rgba(34, 197, 94, 0.1);
+              border: 2px solid rgba(34, 197, 94, 0.3);
+              border-radius: 12px;
+              padding: 20px;
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                font-size: 2rem;
+                font-weight: 700;
+                color: #22c55e;
+                margin-bottom: 5px;
+              "
+              id="lulus-count"
+            >
+              0
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600">
+              Siswa LULUS
+            </div>
+          </div>
+          <div
+            style="
+              background: rgba(239, 68, 68, 0.1);
+              border: 2px solid rgba(239, 68, 68, 0.3);
+              border-radius: 12px;
+              padding: 20px;
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                font-size: 2rem;
+                font-weight: 700;
+                color: #ef4444;
+                margin-bottom: 5px;
+              "
+              id="tidak-lulus-count"
+            >
+              0
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600">
+              Siswa TIDAK LULUS
+            </div>
+          </div>
+          <div
+            style="
+              background: rgba(251, 191, 36, 0.1);
+              border: 2px solid rgba(251, 191, 36, 0.3);
+              border-radius: 12px;
+              padding: 20px;
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                font-size: 2rem;
+                font-weight: 700;
+                color: #fbbf24;
+                margin-bottom: 5px;
+              "
+              id="total-count"
+            >
+              0
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600">
+              Total Siswa
+            </div>
+          </div>
+        </div>
+
+        <h2>📋 Daftar Siswa</h2>
+        <div id="student-list">
+          <p style="text-align: center; color: rgba(255, 255, 255, 0.7)">
+            Memuat data siswa...
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SheetJS Library for Excel processing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+      let students = {};
+
+      // Load students from localStorage
+      function loadStudentsFromStorage() {
+        const saved = localStorage.getItem("tunasGurindamStudents");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          Object.keys(students).forEach((key) => delete students[key]);
+          Object.assign(students, parsed);
+        } else {
+          // Default data
+          students = {
+            TGC00001: { nama: "ASSYIFA ZEVANA ARWINI", status: "LULUS" },
+            TGC00002: { nama: "ABDUL HADI", status: "LULUS" },
+            TGC00003: { nama: "ADE NAFISAH RISKIA WIJAYANTI", status: "LULUS" },
+            TGC00004: { nama: "ADIKA GUNAWAN", status: "LULUS" },
+            TGC00005: { nama: "AFIQA RAMADHANI", status: "LULUS" },
+            TGC00006: { nama: "AISYAH HUMAIRAH", status: "LULUS" },
+            TGC00007: { nama: "ALIFA CAHAYA NIKITA", status: "LULUS" },
+            TGC00008: { nama: "ANDIKA PRASTIA EKA", status: "LULUS" },
+            TGC00009: { nama: "AQILA MUTIARA KENCANA", status: "LULUS" },
+            TGC00010: { nama: "AQILA SYARASIFA SATIA", status: "LULUS" },
+            TGC00011: { nama: "AULIA KHAIRUNNISA", status: "LULUS" },
+            TGC00012: { nama: "AZAHIRA JAUVA FANO", status: "LULUS" },
+            TGC00013: { nama: "AZARINE EDGINA WISONO", status: "LULUS" },
+            TGC00014: { nama: "CRISTIAN GUNAWAN IVONKOV", status: "LULUS" },
+            TGC00015: { nama: "DAFFA FARUREZI", status: "LULUS" },
+            TGC00016: { nama: "DAVIN CANVARO SIMBOLON", status: "LULUS" },
+            TGC00017: { nama: "DEA ANANDITA", status: "LULUS" },
+            TGC00018: { nama: "DHIKA ADITYAH", status: "LULUS" },
+            TGC00019: { nama: "DHIWA SYABIL ARSAKHA", status: "LULUS" },
+            TGC00020: { nama: "ELWIYA HARUM MURAWICA", status: "LULUS" },
+            TGC00021: { nama: "FAIZ SYAHZIQRO KUNAWI", status: "LULUS" },
+            TGC00022: { nama: "FANESYA WATIARINI", status: "LULUS" },
+            TGC00023: { nama: "FANI DWI OKTA VINDA", status: "LULUS" },
+            TGC00024: { nama: "FARADISYA KANZA RIZQINA", status: "LULUS" },
+            TGC00025: { nama: "FATIHAH ZHAFIRAH FALLAH", status: "LULUS" },
+            TGC00026: { nama: "FAZIRA NAYRA RAMADANI", status: "LULUS" },
+            TGC00027: { nama: "FIDORA HARIANI LAIA", status: "LULUS" },
+            TGC00028: { nama: "FIKRI RAHMAT HAKIM", status: "LULUS" },
+            TGC00029: { nama: "FRANSISKA AMANDA GISELLE SIM", status: "LULUS" },
+            TGC00030: { nama: "FRISTI HELLDY OKTAVIYANI", status: "LULUS" },
+            TGC00031: { nama: "GHARISSA ALMIRA ARIFIN", status: "LULUS" },
+            TGC00032: { nama: "GIVI LAUDYA QONITAH", status: "LULUS" },
+            TGC00033: { nama: "HAFSAH ZAIMAH HUSNAH", status: "LULUS" },
+            TGC00034: { nama: "IBRAHIM AL FHARIZIE", status: "LULUS" },
+            TGC00035: { nama: "INDAH PERMATA DEWI", status: "LULUS" },
+            TGC00036: { nama: "IRELAND AQILLA ALVAROZIQQY", status: "LULUS" },
+            TGC00037: { nama: "JASMINE ADZKHIA PUTRI", status: "LULUS" },
+            TGC00038: { nama: "JAUZAA", status: "LULUS" },
+            TGC00039: { nama: "KAZIRA ROFINA", status: "LULUS" },
+            TGC00040: { nama: "KAZURA ROFINI", status: "LULUS" },
+            TGC00041: { nama: "KEENAR AQILASYA QUINARA", status: "LULUS" },
+            TGC00042: { nama: "KEVIN AL FINO", status: "LULUS" },
+            TGC00043: { nama: "KEYLA AISYAH HENDRA", status: "LULUS" },
+            TGC00044: { nama: "KHAIRUNNISA SALSABILA", status: "LULUS" },
+            TGC00045: { nama: "KINDY RAZASSENTUSY ENDEE", status: "LULUS" },
+            TGC00046: { nama: "LUTHFI ARFA PRATAMA", status: "LULUS" },
+            TGC00047: { nama: "M. HAMIZAN IHSAN FADILLAH", status: "LULUS" },
+            TGC00048: { nama: "M. RIZKY BINTAN ZULIA PUTRA", status: "LULUS" },
+            TGC00049: { nama: "M.ANAIKIN SHAH DANISY", status: "LULUS" },
+            TGC00050: { nama: "M.SYAFIQ AKBHAR", status: "LULUS" },
+            TGC00051: { nama: "MAGHFIRA ZULIA BILQIS", status: "LULUS" },
+            TGC00052: { nama: "MARSHANDY WINATA", status: "LULUS" },
+            TGC00053: { nama: "MERRY CRYSMES", status: "LULUS" },
+            TGC00054: { nama: "MUHAMMAD AGIEL ALENDA", status: "LULUS" },
+            TGC00055: { nama: "MUHAMMAD JUNESA ILHAM", status: "LULUS" },
+            TGC00056: { nama: "MUHAMMAD RADIKA A.F", status: "LULUS" },
+            TGC00057: { nama: "MUTIARA ANGGARAINI PUTRI", status: "LULUS" },
+            TGC00058: { nama: "NADIA ALFIAH DIANTORO", status: "LULUS" },
+            TGC00059: { nama: "NAILA PUTRI DWIMA", status: "LULUS" },
+            TGC00060: { nama: "NAQURA TEJA CANTIDHARMA", status: "LULUS" },
+            TGC00061: { nama: "NAUFAL FAKHRUL ALFARISI", status: "LULUS" },
+            TGC00062: { nama: "NAYLA AZZAHRA LYOVA", status: "LULUS" },
+            TGC00063: { nama: "NHELIA RAHMADINA", status: "LULUS" },
+            TGC00064: { nama: "NIKEN AYU", status: "LULUS" },
+            TGC00065: { nama: "NOVELITA", status: "LULUS" },
+            TGC00066: { nama: "NUR ADILLAH", status: "LULUS" },
+            TGC00067: { nama: "NUR ALISA", status: "LULUS" },
+            TGC00068: { nama: "NURFADILLAH PRATIWI", status: "LULUS" },
+            TGC00069: { nama: "NURYANABELLA", status: "LULUS" },
+            TGC00070: { nama: "PINKY AYU WULANDARI", status: "LULUS" },
+            TGC00071: { nama: "PUTRI NIZA HAYATI", status: "LULUS" },
+            TGC00072: { nama: "QUEENI GLADYS RIAUFANI", status: "LULUS" },
+            TGC00073: { nama: "RADHITYA JAVAS ANGGARA", status: "LULUS" },
+            TGC00074: { nama: "RADISTY PUTRI ANINDYA", status: "LULUS" },
+            TGC00075: { nama: "RAHIM HAMZAH HARAHAP", status: "LULUS" },
+            TGC00076: { nama: "RAHMAN HAMZAH HARAHAP", status: "LULUS" },
+            TGC00077: { nama: "RAHSYAIDINA PANJAITAN", status: "LULUS" },
+            TGC00078: { nama: "RAINNESHA", status: "LULUS" },
+            TGC00079: { nama: "RAISSA ALYA SAFIQHA", status: "LULUS" },
+            TGC00080: { nama: "RANGGA WICAKSANA", status: "LULUS" },
+            TGC00081: { nama: "RAYLA NABILA ALIANY", status: "LULUS" },
+            TGC00082: { nama: "SALWA RAHMATUN NAZILA", status: "LULUS" },
+            TGC00083: { nama: "SEKAR WIDIYA", status: "LULUS" },
+            TGC00084: { nama: "SETIAWAN ADE SAPUTRA", status: "LULUS" },
+            TGC00085: { nama: "SHAFIRA AZZAHRA PUTRI", status: "LULUS" },
+            TGC00086: { nama: "SHALSABILLA", status: "LULUS" },
+            TGC00087: { nama: "SHEANANDRAKARELLINA", status: "LULUS" },
+            TGC00088: { nama: "SITI RAEESA RAMAPUTRI", status: "LULUS" },
+            TGC00089: { nama: "SYARIFAH ADYA SHAVA", status: "LULUS" },
+            TGC00090: { nama: "THARIQ DZAKI AKRAM", status: "LULUS" },
+            TGC00091: { nama: "TIFANIA TAMA", status: "LULUS" },
+            TGC00092: { nama: "TRI ALTA OKTO SYAHPUTRA", status: "LULUS" },
+            TGC00093: { nama: "VANILLA SASHA ALVIOLETA", status: "LULUS" },
+            TGC00094: { nama: "WAN GUSTI FITRA ARB'INNURRIZ", status: "LULUS" },
+            TGC00095: { nama: "WIYOLA EVELLIN UTAMI", status: "LULUS" },
+            TGC00096: { nama: "YHARA PRIAYU ANDITA", status: "LULUS" },
+            TGC00097: { nama: "YOWELLANANDA", status: "LULUS" },
+            TGC00098: { nama: "YUZAL ZAHRA SALSA BILA", status: "LULUS" },
+            TGC00099: { nama: "AZUMI RAMADHANI", status: "LULUS" },
+            TGC00100: { nama: "KEYZA KARELLINA", status: "LULUS" },
+            TGC00101: { nama: "HAYRA FATIKA SARI", status: "LULUS" },
+            TGC00102: { nama: "MUHAMAD JAMIL SAMPURNO", status: "LULUS" },
+            TGC00103: { nama: "DINDA ARDILA", status: "LULUS" },
+            TGC00104: { nama: "SHIVA RUBY AISYAH YANUWIARSO", status: "LULUS" },
+            TGC00105: { nama: "RATU AZILLA RASYAD", status: "LULUS" },
+            TGC00106: { nama: "MECCA CHAIRUNISA AURITA", status: "LULUS" },
+            TGC00107: { nama: "RIZKI EMERALD AZZURRI", status: "LULUS" },
+            TGC00108: { nama: "ADELLIA WATI SENGKO", status: "LULUS" },
+            TGC00109: { nama: "NAYSHILA AULIA PUTRI", status: "LULUS" },
+            TGC00110: { nama: "GRACIA NADINE JOVANA SAGALA", status: "LULUS" },
+            TGC00111: { nama: "MUHAMAD ALDIAN", status: "LULUS" },
+            TGC00112: { nama: "DAFFA ARRIDHO", status: "LULUS" },
+            TGC00113: { nama: "NAURA SYABIYA HEVIZA", status: "LULUS" },
+            TGC00114: { nama: "KEYSYA PUTRI AULIA", status: "LULUS" },
+            TGC00115: { nama: "ZIANDRA NUGRAH PRATAMA", status: "LULUS" },
+            TGC00116: { nama: "RATU BALQIS PUTE", status: "LULUS" },
+            TGC00117: { nama: "ENJILITA ALIFA RAMADHANI", status: "LULUS" },
+            TGC00118: { nama: "REVANDA PUTRA DWI ANDERA", status: "LULUS" },
+            TGC00119: { nama: "FITO MUHAMAD SIDEK", status: "LULUS" },
+            TGC00120: { nama: "BENING CAHYA LIANY SIREGAR", status: "LULUS" },
+            TGC00121: { nama: "M.NAUFAL PANDU WINATA", status: "LULUS" },
+            TGC00122: { nama: "LARASATI BAHRIA", status: "LULUS" },
+            TGC00123: { nama: "AUDREY BATRISYA QAIREEN", status: "LULUS" },
+            TGC00124: { nama: "FERDIAN KHALIK", status: "LULUS" },
+            TGC00125: { nama: "AZURA AZIAN", status: "LULUS" },
+            TGC00126: { nama: "ORLIN ADILAH RAHIL", status: "LULUS" },
+            TGC00127: { nama: "SHAFA ARTIQAH SARI", status: "LULUS" },
+            TGC00128: { nama: "JEAN MARYAMAURYLOV LUCIANO", status: "LULUS" },
+            TGC00129: { nama: "AIRA ANASTASYA PUTRI", status: "LULUS" },
+            TGC00130: { nama: "RAYYA DWI SYAFITRI", status: "LULUS" },
+            TGC00131: { nama: "CANTIKA NUR AQILLAH", status: "LULUS" },
+            TGC00132: { nama: "MUHAMMAD NAUFAL", status: "LULUS" },
+            TGC00133: { nama: "JONATHAN FEBRIAND SIRAIT", status: "LULUS" },
+            TGC00134: { nama: "TIRZHA SANDIORIVA", status: "LULUS" },
+            TGC00135: { nama: "MAESYA DWI SYAHRINI", status: "LULUS" },
+            TGC00136: { nama: "ZAIDAN FURQON AL FIKRI", status: "LULUS" },
+            TGC00137: { nama: "M.DIAS ANUGRAH", status: "LULUS" },
+            TGC00138: { nama: "VARENO OKA LISANDI", status: "LULUS" },
+            TGC00139: { nama: "IMELDA SAFITRI", status: "LULUS" },
+            TGC00140: { nama: "JIBRIL JOSYAN KABIR", status: "LULUS" },
+            TGC00141: { nama: "HAFIDH AHMAD", status: "LULUS" },
+            TGC00142: { nama: "RHATU NAZYWA AIRA", status: "LULUS" },
+            TGC00143: { nama: "CHERIAVANI RIZKIKA SYAHPUTRI", status: "LULUS" },
+            TGC00144: { nama: "FEBY ANGGRAINI PUTRI S.", status: "LULUS" },
+            TGC00145: { nama: "PRAYOGA HASYIM", status: "LULUS" },
+            TGC00146: { nama: "BRAGER BANDERAS", status: "LULUS" },
+            TGC00147: { nama: "MAULIDA FEBRIANI", status: "LULUS" },
+            TGC00148: { nama: "WEA AZKA", status: "LULUS" },
+            TGC00149: {
+              nama: "RAHEES IRWAN FEBRIANTO NENGGOLAN",
+              status: "LULUS",
+            },
+            TGC00150: { nama: "E. SINGLIN", status: "LULUS" },
+            TGC00151: { nama: "PATRICIA AGUSTIANI", status: "LULUS" },
+            TGC00152: { nama: "RAMA ARTHA PRADANA", status: "LULUS" },
+            TGC00153: { nama: "ALEA MIRABHEL", status: "LULUS" },
+            TGC00154: {
+              nama: "ZAFIKA ADELIA ANUGERAH BINTAN",
+              status: "LULUS",
+            },
+            TGC00155: {
+              nama: "NUR SHAHADA DWIPUTRI ASTUTI & AZLAN",
+              status: "LULUS",
+            },
+            TGC00156: { nama: "META LESTARI HARDIYANTI", status: "LULUS" },
+            TGC00157: { nama: "MOHAMMAD HAFIZH ILHAM", status: "LULUS" },
+            TGC00158: { nama: "RAYSHA WULAN DESMAWATI", status: "LULUS" },
+            TGC00159: { nama: "BANYU VIKRY OKTABRIAN", status: "LULUS" },
+            TGC00160: {
+              nama: "ANANDA PUTRI YURI BINTANI SARAGIH",
+              status: "LULUS",
+            },
+            TGC00161: { nama: "NADIRA CITRA MULYASARI", status: "LULUS" },
+            TGC00162: { nama: "SYAFIRA", status: "LULUS" },
+            TGC00163: { nama: "AIRA ANGGUN FERNANTA", status: "LULUS" },
+            TGC00164: { nama: "NABIL ATHAILLAH MISUDHA", status: "LULUS" },
+            TGC00165: { nama: "SARAH DWI ANNISA", status: "LULUS" },
+            TGC00166: { nama: "KAILA MAILAN SARI", status: "LULUS" },
+            TGC00167: {
+              nama: "FAIZA WIDYA KIRANA ALIM & LENTY NAFETA",
+              status: "LULUS",
+            },
+            TGC00168: { nama: "AISHA AR-RANTISI ARDIE", status: "LULUS" },
+            TGC00169: { nama: "HAFIQAH ANISSA KINANTI PUTRI", status: "LULUS" },
+            TGC00170: { nama: "EMILY", status: "LULUS" },
+            TGC00171: { nama: "APRILIA EKA MULYA", status: "LULUS" },
+            TGC00172: { nama: "LOLITA", status: "LULUS" },
+            TGC00173: { nama: "ADINDA LARAS", status: "LULUS" },
+            TGC00174: { nama: "M.FEBRI KURNIAWAN", status: "LULUS" },
+            TGC00175: { nama: "TIARA CINTA TIAS", status: "LULUS" },
+            TGC00176: { nama: "TRI SAPUTRA SITOHANG", status: "LULUS" },
+            TGC00177: { nama: "KINANTI KUSUMASTUTI MAHARANI", status: "LULUS" },
+            TGC00178: { nama: "ABDUL ROBBY SAPUTRA", status: "LULUS" },
+            TGC00179: { nama: "NURA SYIEFHA", status: "LULUS" },
+            TGC00180: { nama: "RIFIA RESPIANI", status: "LULUS" },
+            TGC00181: { nama: "PAREL ERIZA APRILDIANSYAH", status: "LULUS" },
+            TGC00182: { nama: "SYAHRANI PUTRI AULIA", status: "LULUS" },
+            TGC00183: { nama: "DANIEL MORENO", status: "LULUS" },
+            TGC00184: { nama: "IQBAL SYAHPUTRA", status: "LULUS" },
+            TGC00185: { nama: "AL FANDI IQSAN", status: "LULUS" },
+            TGC00186: { nama: "DENIES FEBRIANDA", status: "LULUS" },
+            TGC00187: { nama: "ADINDA UGAHARI PUTRI AMIDA", status: "LULUS" },
+            TGC00188: { nama: "NOVIA PUTRI NURHIDAYATI", status: "LULUS" },
+            TGC00189: { nama: "RONI SAPUTRA", status: "LULUS" },
+            TGC00190: { nama: "LA ODE SULAIMAN", status: "LULUS" },
+            TGC00191: { nama: "M.JAUHAR QOLBY", status: "LULUS" },
+            TGC00192: { nama: "MAR'ATU SOLIHATUN", status: "LULUS" },
+            TGC00193: { nama: "AYU WARTIKASARI", status: "LULUS" },
+            TGC00194: { nama: "ALDHILLAN WIYANG PANGESTU", status: "LULUS" },
+            TGC00195: { nama: "ONY YUNAN UKHRAWI", status: "LULUS" },
+            TGC00196: { nama: "ERVIN ARDINA", status: "LULUS" },
+            TGC00197: { nama: "ATIKA PRILLIANA TANIA", status: "LULUS" },
+            TGC00198: { nama: "DZEKO SAFARAZ HARIFAN", status: "LULUS" },
+            TGC00199: { nama: "QUINSHA ALIKA FARAHITA", status: "LULUS" },
+            TGC00200: { nama: "SAFA AYU SAFITRI", status: "LULUS" },
+            TGC00201: { nama: "PENDY SETIAWANSYAH", status: "LULUS" },
+            TGC00202: { nama: "DIGO BRAMALDO TAKBIRANTO", status: "LULUS" },
+            TGC00203: { nama: "ROBY SAHPUTRA", status: "LULUS" },
+            TGC00204: { nama: "OGGY ARLIANSYAH", status: "LULUS" },
+          };
+          saveStudentsToStorage();
+        }
+      }
+
+      // Save students to localStorage
+      function saveStudentsToStorage() {
+        try {
+          localStorage.setItem(
+            "tunasGurindamStudents",
+            JSON.stringify(students)
+          );
+          showAlert("Data berhasil disimpan!", "success");
+        } catch (error) {
+          showAlert("Error menyimpan data: " + error.message, "error");
+        }
+      }
+
+      // Show alert message
+      function showAlert(message, type) {
+        const alertDiv = document.getElementById("alert");
+        alertDiv.textContent = message;
+        alertDiv.className = `alert alert-${type}`;
+        alertDiv.classList.remove("hidden");
+
+        setTimeout(() => {
+          alertDiv.classList.add("hidden");
+        }, 3000);
+      }
+
+      // Generate next ID
+      function generateNextId() {
+        const ids = Object.keys(students).map((id) =>
+          parseInt(id.replace("TGC", ""))
+        );
+        const maxId = Math.max(...ids);
+        return `TGC${String(maxId + 1).padStart(5, "0")}`;
+      }
+
+      // Execute command for student status
+      document
+        .getElementById("command-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const studentInput = document
+            .getElementById("command-student")
+            .value.trim()
+            .toUpperCase();
+          const command = document.getElementById("command-status").value;
+
+          if (!studentInput || !command) {
+            showAlert("Nama/ID siswa dan command harus diisi!", "error");
+            return;
+          }
+
+          // Find student by name or ID
+          let studentId = null;
+          let studentName = null;
+
+          // First try to find by ID
+          if (students[studentInput]) {
+            studentId = studentInput;
+            studentName = students[studentInput].nama;
+          } else {
+            // Try to find by name
+            for (const [id, student] of Object.entries(students)) {
+              if (student.nama.toUpperCase() === studentInput) {
+                studentId = id;
+                studentName = student.nama;
+                break;
+              }
+            }
+          }
+
+          if (!studentId) {
+            showAlert(
+              `Siswa dengan nama/ID "${studentInput}" tidak ditemukan!`,
+              "error"
+            );
+            return;
+          }
+
+          // Execute command
+          const oldStatus = students[studentId].status;
+          students[studentId].status = command;
+          saveStudentsToStorage();
+
+          // Clear form
+          document.getElementById("command-student").value = "";
+          document.getElementById("command-status").value = "";
+
+          showAlert(
+            `✅ Command "${command}" berhasil dieksekusi untuk ${studentName} (ID: ${studentId})`,
+            "success"
+          );
+          displayStudents();
+        });
+
+      // Add new student
+      document
+        .getElementById("add-student-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const id = document
+            .getElementById("student-id")
+            .value.trim()
+            .toUpperCase();
+          const name = document
+            .getElementById("student-name")
+            .value.trim()
+            .toUpperCase();
+          const status = document.getElementById("student-status").value;
+
+          if (!id || !name || !status) {
+            showAlert("Semua field harus diisi!", "error");
+            return;
+          }
+
+          if (students[id]) {
+            showAlert("ID siswa sudah ada!", "error");
+            return;
+          }
+
+          students[id] = { nama: name, status: status };
+          saveStudentsToStorage();
+
+          // Clear form
+          document.getElementById("student-id").value = generateNextId();
+          document.getElementById("student-name").value = "";
+          document.getElementById("student-status").value = "";
+
+          displayStudents();
+        });
+
+      // Edit student
+      function editStudent(id) {
+        const student = students[id];
+        if (!student) return;
+
+        document.getElementById("edit-student-id").value = id;
+        document.getElementById("edit-student-name").value = student.nama;
+        document.getElementById("edit-student-status").value = student.status;
+
+        document.getElementById("edit-section").classList.remove("hidden");
+        document
+          .getElementById("edit-section")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Cancel edit
+      function cancelEdit() {
+        document.getElementById("edit-section").classList.add("hidden");
+      }
+
+      // Save edited student
+      document
+        .getElementById("edit-student-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const id = document.getElementById("edit-student-id").value;
+          const name = document
+            .getElementById("edit-student-name")
+            .value.trim()
+            .toUpperCase();
+          const status = document.getElementById("edit-student-status").value;
+
+          if (!name || !status) {
+            showAlert("Semua field harus diisi!", "error");
+            return;
+          }
+
+          students[id] = { nama: name, status: status };
+          saveStudentsToStorage();
+
+          document.getElementById("edit-section").classList.add("hidden");
+          displayStudents();
+        });
+
+      // Delete student
+      function deleteStudent(id) {
+        if (
+          confirm(
+            `Apakah Anda yakin ingin menghapus siswa ${students[id].nama}?`
+          )
+        ) {
+          delete students[id];
+          saveStudentsToStorage();
+          displayStudents();
+        }
+      }
+
+      // Display students in table
+      function displayStudents() {
+        const studentList = document.getElementById("student-list");
+        const studentArray = Object.entries(students);
+
+        // Update status summary
+        updateStatusSummary(studentArray);
+
+        if (studentArray.length === 0) {
+          studentList.innerHTML =
+            '<p style="text-align: center; color: rgba(255,255,255,0.7);">Belum ada data siswa.</p>';
+          return;
+        }
+
+        let html = `
+                <table class="student-table">
+                    <thead>
+                        <tr>
+                            <th>ID Siswa</th>
+                            <th>Nama</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+        studentArray.forEach(([id, student]) => {
+          const statusClass =
+            student.status === "LULUS" ? "status-passed" : "status-failed";
+          html += `
+                    <tr>
+                        <td>${id}</td>
+                        <td>${student.nama}</td>
+                        <td class="${statusClass}">${student.status}</td>
+                        <td class="actions">
+                            <button class="btn btn-secondary btn-small" onclick="editStudent('${id}')">✏️ Edit</button>
+                            <button class="btn btn-danger btn-small" onclick="deleteStudent('${id}')">🗑️ Hapus</button>
+                        </td>
+                    </tr>
+                `;
+        });
+
+        html += `
+                    </tbody>
+                </table>
+            `;
+
+        studentList.innerHTML = html;
+      }
+
+      // Update status summary counts
+      function updateStatusSummary(studentArray) {
+        let lulusCount = 0;
+        let tidakLulusCount = 0;
+
+        studentArray.forEach(([id, student]) => {
+          if (student.status === "LULUS") {
+            lulusCount++;
+          } else if (student.status === "TIDAK LULUS") {
+            tidakLulusCount++;
+          }
+        });
+
+        document.getElementById("lulus-count").textContent = lulusCount;
+        document.getElementById("tidak-lulus-count").textContent =
+          tidakLulusCount;
+        document.getElementById("total-count").textContent =
+          studentArray.length;
+      }
+
+      // Load announcement time from localStorage
+      function loadAnnouncementTime() {
+        const saved = localStorage.getItem("tunasGurindamReleaseDate");
+        const displayDiv = document.getElementById("current-time-display");
+
+        if (saved) {
+          const releaseDate = new Date(saved);
+          const formattedDate = releaseDate.toLocaleDateString("id-ID", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          displayDiv.innerHTML = `
+                    <div style="color: #fbbf24; font-weight: 600;">${formattedDate}</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px; color: rgba(255,255,255,0.8);">
+                        Countdown aktif di halaman utama
+                    </div>
+                `;
+
+          // Set form values
+          const dateStr = releaseDate.toISOString().split("T")[0];
+          const timeStr = releaseDate.toTimeString().slice(0, 5);
+          document.getElementById("announcement-date").value = dateStr;
+          document.getElementById("announcement-time").value = timeStr;
+        } else {
+          displayDiv.innerHTML = `
+                    <div style="color: rgba(255,255,255,0.6);">Belum diatur</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px; color: rgba(255,255,255,0.8);">
+                        Atur waktu untuk mengaktifkan countdown
+                    </div>
+                `;
+        }
+      }
+
+      // Save announcement time to localStorage
+      function saveAnnouncementTime(dateStr, timeStr) {
+        const dateTimeStr = `${dateStr}T${timeStr}:00`;
+        const releaseDate = new Date(dateTimeStr);
+
+        if (isNaN(releaseDate.getTime())) {
+          showAlert("Format tanggal/waktu tidak valid!", "error");
+          return false;
+        }
+
+        localStorage.setItem(
+          "tunasGurindamReleaseDate",
+          releaseDate.toISOString()
+        );
+        showAlert("Waktu pengumuman berhasil disimpan!", "success");
+        loadAnnouncementTime(); // Refresh display
+        return true;
+      }
+
+      // Clear announcement time
+      function clearAnnouncementTime() {
+        if (
+          confirm(
+            "Apakah Anda yakin ingin menghapus waktu pengumuman? Tombol cek kelulusan akan dinonaktifkan."
+          )
+        ) {
+          localStorage.removeItem("tunasGurindamReleaseDate");
+          document.getElementById("announcement-date").value = "";
+          document.getElementById("announcement-time").value = "";
+          showAlert("Waktu pengumuman berhasil dihapus!", "success");
+          loadAnnouncementTime(); // Refresh display
+        }
+      }
+
+      // Handle time setting form submission
+      document
+        .getElementById("time-setting-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const dateValue = document.getElementById("announcement-date").value;
+          const timeValue = document.getElementById("announcement-time").value;
+
+          if (!dateValue || !timeValue) {
+            showAlert("Tanggal dan waktu harus diisi!", "error");
+            return;
+          }
+
+          saveAnnouncementTime(dateValue, timeValue);
+        });
+
+      // Download Excel template
+      function downloadExcelTemplate() {
+        // Create sample data
+        const templateData = [
+          ["ID Siswa", "Nama Lengkap", "Status"],
+          ["TGC00001", "AHMAD SANTOSO", "LULUS"],
+          ["TGC00002", "SITI NURHALIZA", "TIDAK LULUS"],
+          ["TGC00003", "BUDI PRASETYO", "LULUS"],
+        ];
+
+        // Create workbook and worksheet
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet(templateData);
+
+        // Set column widths
+        ws["!cols"] = [
+          { wch: 12 }, // ID column
+          { wch: 25 }, // Name column
+          { wch: 15 }, // Status column
+        ];
+
+        // Add worksheet to workbook
+        XLSX.utils.book_append_sheet(wb, ws, "Template Siswa");
+
+        // Download file
+        XLSX.writeFile(wb, "template_siswa.xlsx");
+
+        showAlert("Template Excel berhasil didownload!", "success");
+      }
+
+      // Export current data as Excel
+      function exportCurrentData() {
+        if (Object.keys(students).length === 0) {
+          showAlert("Tidak ada data siswa untuk diekspor!", "error");
+          return;
+        }
+
+        // Prepare data for export
+        const exportData = [["ID Siswa", "Nama Lengkap", "Status"]];
+
+        // Add all student data
+        Object.entries(students).forEach(([id, student]) => {
+          exportData.push([id, student.nama, student.status]);
+        });
+
+        // Create workbook and worksheet
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet(exportData);
+
+        // Set column widths
+        ws["!cols"] = [
+          { wch: 12 }, // ID column
+          { wch: 25 }, // Name column
+          { wch: 15 }, // Status column
+        ];
+
+        // Add worksheet to workbook
+        XLSX.utils.book_append_sheet(wb, ws, "Data Siswa");
+
+        // Generate filename with current date
+        const now = new Date();
+        const dateStr = now.toISOString().split("T")[0];
+        const filename = `data_siswa_${dateStr}.xlsx`;
+
+        // Download file
+        XLSX.writeFile(wb, filename);
+
+        showAlert(
+          `Data siswa berhasil diekspor sebagai ${filename}!`,
+          "success"
+        );
+      }
+
+      // Process Excel upload
+      function processExcelUpload() {
+        const fileInput = document.getElementById("excel-file");
+        const file = fileInput.files[0];
+
+        if (!file) {
+          showAlert("Silakan pilih file Excel terlebih dahulu!", "error");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: "array" });
+
+            // Get first worksheet
+            const sheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[sheetName];
+
+            // Convert to JSON
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+            // Process the data
+            processExcelData(jsonData);
+          } catch (error) {
+            showAlert("Error membaca file Excel: " + error.message, "error");
+          }
+        };
+
+        reader.readAsArrayBuffer(file);
+      }
+
+      // Process Excel data and save to students
+      function processExcelData(data) {
+        if (data.length < 2) {
+          showAlert(
+            "File Excel harus memiliki minimal 2 baris (header + data)!",
+            "error"
+          );
+          return;
+        }
+
+        // Remove header row
+        data.shift();
+
+        let successCount = 0;
+        let errorCount = 0;
+        const errors = [];
+
+        data.forEach((row, index) => {
+          const rowNumber = index + 2; // +2 because we removed header and arrays are 0-indexed
+
+          // Validate row has 3 columns
+          if (row.length < 3) {
+            errors.push(`Baris ${rowNumber}: Data tidak lengkap`);
+            errorCount++;
+            return;
+          }
+
+          const [id, nama, status] = row;
+
+          // Validate data
+          if (!id || !nama || !status) {
+            errors.push(`Baris ${rowNumber}: ID, Nama, atau Status kosong`);
+            errorCount++;
+            return;
+          }
+
+          // Validate status
+          const validStatuses = ["LULUS", "TIDAK LULUS"];
+          if (!validStatuses.includes(status.toString().toUpperCase())) {
+            errors.push(
+              `Baris ${rowNumber}: Status harus LULUS atau TIDAK LULUS`
+            );
+            errorCount++;
+            return;
+          }
+
+          // Check if ID already exists
+          if (students[id.toString().toUpperCase()]) {
+            errors.push(`Baris ${rowNumber}: ID ${id} sudah ada`);
+            errorCount++;
+            return;
+          }
+
+          // Add student
+          students[id.toString().toUpperCase()] = {
+            nama: nama.toString().toUpperCase(),
+            status: status.toString().toUpperCase(),
+          };
+
+          successCount++;
+        });
+
+        // Save to localStorage
+        saveStudentsToStorage();
+
+        // Show results
+        if (successCount > 0) {
+          showAlert(
+            `✅ Berhasil menambahkan ${successCount} siswa dari Excel!`,
+            "success"
+          );
+        }
+
+        if (errorCount > 0) {
+          let errorMessage = `⚠️ ${errorCount} baris gagal diproses:\n`;
+          errors.slice(0, 5).forEach((error) => {
+            errorMessage += `• ${error}\n`;
+          });
+          if (errors.length > 5) {
+            errorMessage += `• ... dan ${errors.length - 5} error lainnya`;
+          }
+          alert(errorMessage);
+        }
+
+        // Clear file input
+        document.getElementById("excel-file").value = "";
+        document.getElementById("file-name-display").textContent =
+          "Belum ada file dipilih";
+        document.getElementById("upload-btn").disabled = true;
+
+        // Refresh display
+        displayStudents();
+      }
+
+      // Handle file selection
+      document
+        .getElementById("excel-file")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          const fileNameDisplay = document.getElementById("file-name-display");
+          const uploadBtn = document.getElementById("upload-btn");
+
+          if (file) {
+            fileNameDisplay.textContent = `📄 ${file.name}`;
+            uploadBtn.disabled = false;
+            uploadBtn.style.background =
+              "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)";
+          } else {
+            fileNameDisplay.textContent = "Belum ada file dipilih";
+            uploadBtn.disabled = true;
+            uploadBtn.style.background =
+              "linear-gradient(135deg, #6b7280 0%, #4b5563 100%)";
+          }
+        });
+
+      // Initialize page
+      document.addEventListener("DOMContentLoaded", function () {
+        loadStudentsFromStorage();
+        displayStudents();
+        loadAnnouncementTime();
+        startBackgroundMusic();
+
+        // Set next ID in form
+        document.getElementById("student-id").value = generateNextId();
+
+        // Setup Excel functionality
+        document
+          .getElementById("download-template")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            downloadExcelTemplate();
+          });
+
+        document
+          .getElementById("export-current-data")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            exportCurrentData();
+          });
+
+        document
+          .getElementById("upload-btn")
+          .addEventListener("click", processExcelUpload);
+      });
+
+      // Start background music
+      function startBackgroundMusic() {
+        const bgMusic = document.getElementById("bg-music");
+        if (bgMusic) {
+          // Force autoplay with multiple attempts
+          const playPromise = bgMusic.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                console.log("Background music started successfully");
+              })
+              .catch((error) => {
+                console.log("Autoplay blocked, trying alternative methods");
+                // Try to play on user interaction
+                document.addEventListener(
+                  "click",
+                  function playOnClick() {
+                    bgMusic.play();
+                    document.removeEventListener("click", playOnClick);
+                  },
+                  { once: true }
+                );
+              });
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
