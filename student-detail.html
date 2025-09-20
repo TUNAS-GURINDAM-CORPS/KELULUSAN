@@ -2,10 +2,7 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover"
-    />
+    <meta  name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover"/>
     <title>Detail Siswa - Tunas Gurindam Corps</title>
 
 
@@ -18,26 +15,29 @@
 
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         min-height: 100vh;
         color: #333;
         padding: 10px;
-        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-x: hidden;
+        position: relative;
       }
 
+
+
       .container {
-        max-width: 1200px;
+        max-width: 100%;
         margin: 0 auto;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.99));
-        border-radius: 30px;
-        padding: 40px;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         text-align: center;
         width: 95%;
         box-sizing: border-box;
         border: 1px solid rgba(255, 255, 255, 0.3);
         position: relative;
-        overflow: hidden;
+        z-index: 2;
       }
 
       .container::before {
@@ -46,13 +46,13 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 8px;
-        background: linear-gradient(90deg, #4f46e5, #7c3aed, #22c55e, #16a34a, #fbbf24, #f59e0b);
-        border-radius: 30px 30px 0 0;
+        height: 4px;
+        background: linear-gradient(90deg, #4f46e5, #7c3aed, #22c55e);
+        border-radius: 20px 20px 0 0;
       }
 
       .header {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         text-align: center;
         position: relative;
       }
@@ -60,110 +60,93 @@
       .header::after {
         content: '';
         position: absolute;
-        bottom: -15px;
+        bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 100px;
-        height: 3px;
+        width: 60px;
+        height: 2px;
         background: linear-gradient(90deg, #4f46e5, #7c3aed, #22c55e);
-        border-radius: 2px;
+        border-radius: 1px;
       }
 
       .header h1 {
         color: #4f46e5;
-        font-size: 3rem;
-        margin-bottom: 15px;
-        font-weight: 800;
-        text-shadow: 0 3px 6px rgba(79, 70, 229, 0.2);
-        line-height: 1.1;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+        line-height: 1.2;
         position: relative;
       }
 
       .header-clock {
-        margin-top: 20px;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-        border: 2px solid rgba(79, 70, 229, 0.2);
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 8px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        border: 1px solid rgba(79, 70, 229, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
 
       .header-clock .clock-title {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         color: #6b7280;
-        margin-bottom: 8px;
-        font-weight: 600;
+        font-weight: 500;
       }
 
       .header-clock .clock-date {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         color: #4f46e5;
-        font-weight: 700;
-        margin-bottom: 5px;
+        font-weight: 600;
       }
 
       .header-clock .clock-time {
-        font-size: 1.4rem;
+        font-size: 1rem;
         color: #1f2937;
-        font-weight: 800;
+        font-weight: 700;
         font-family: 'Courier New', monospace;
-      }
-
-      /* Mobile responsive for header clock */
-      @media (max-width: 768px) {
-        .header-clock {
-          padding: 12px;
-          margin-top: 15px;
-        }
-
-        .header-clock .clock-date {
-          font-size: 1rem;
-        }
-
-        .header-clock .clock-time {
-          font-size: 1.2rem;
-        }
       }
 
       .header h1::before {
         content: '🎓';
         position: absolute;
-        left: -60px;
+        left: -40px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 2rem;
-        opacity: 0.8;
+        font-size: 1.5rem;
+        opacity: 0.7;
       }
 
       .header h1::after {
         content: '🎓';
         position: absolute;
-        right: -60px;
+        right: -40px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 2rem;
-        opacity: 0.8;
+        font-size: 1.5rem;
+        opacity: 0.7;
       }
 
       .header p {
         color: #6b7280;
-        font-size: 1.3rem;
-        font-weight: 600;
+        font-size: 1rem;
+        font-weight: 500;
         margin: 0;
         position: relative;
         z-index: 1;
       }
 
       .student-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
-        border-radius: 25px;
-        padding: 50px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        margin-bottom: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         position: relative;
-        overflow: hidden;
       }
 
       .student-card::before {
@@ -172,55 +155,42 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 6px;
-        background: linear-gradient(90deg, #4f46e5, #7c3aed, #22c55e, #16a34a);
-        border-radius: 25px 25px 0 0;
+        height: 4px;
+        background: linear-gradient(90deg, #4f46e5, #7c3aed, #22c55e);
+        border-radius: 15px 15px 0 0;
       }
 
       .student-photo {
-        width: 180px;
-        height: 180px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         object-fit: cover;
-        border: 6px solid #4f46e5;
-        box-shadow: 0 12px 35px rgba(79, 70, 229, 0.4);
-        margin: 0 auto 35px;
+        border: 4px solid #4f46e5;
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        margin: 0 auto 20px;
         display: block;
-        transition: all 0.3s ease;
         position: relative;
       }
 
-      .student-photo:hover {
-        transform: scale(1.05);
-        box-shadow: 0 15px 45px rgba(79, 70, 229, 0.5);
-      }
-
       .student-name {
-        font-size: 2.8rem;
-        font-weight: 800;
+        font-size: 1.8rem;
+        font-weight: 700;
         color: #4f46e5;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         text-align: center;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        line-height: 1.2;
+        line-height: 1.3;
       }
 
       .student-status {
-        font-size: 1.6rem;
-        font-weight: 700;
-        padding: 18px 35px;
-        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 12px 25px;
+        border-radius: 25px;
         display: inline-block;
-        margin-bottom: 35px;
+        margin-bottom: 20px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease;
-      }
-
-      .student-status:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
 
       .status-passed {
@@ -242,15 +212,13 @@
       }
 
       .info-section {
-        margin-bottom: 30px;
-        padding: 30px;
-        background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(79, 70, 229, 0.04));
-        border-radius: 18px;
-        border: 2px solid rgba(79, 70, 229, 0.15);
-        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.1);
-        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        padding: 20px;
+        background: rgba(79, 70, 229, 0.08);
+        border-radius: 12px;
+        border: 1px solid rgba(79, 70, 229, 0.2);
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.1);
         position: relative;
-        overflow: hidden;
       }
 
       .info-section::before {
@@ -258,46 +226,40 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 6px;
+        width: 4px;
         height: 100%;
         background: linear-gradient(180deg, #4f46e5, #7c3aed);
-        border-radius: 0 3px 3px 0;
-      }
-
-      .info-section:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15);
-        background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(79, 70, 229, 0.06));
+        border-radius: 0 2px 2px 0;
       }
 
       .info-section h3 {
         color: #4f46e5;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
       }
 
       .info-section h3::before {
         content: '📋';
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
       .info-section p {
         color: #374151;
-        line-height: 1.7;
-        font-size: 1.1rem;
+        line-height: 1.6;
+        font-size: 1rem;
         font-weight: 500;
         margin: 0;
       }
 
       .info-section p strong {
         color: #4f46e5;
-        font-weight: 700;
+        font-weight: 600;
       }
 
       .congratulations {
@@ -474,9 +436,9 @@
 
       .nav-buttons {
         display: flex;
-        gap: 25px;
+        gap: 15px;
         justify-content: center;
-        margin-top: 50px;
+        margin-top: 30px;
         flex-wrap: wrap;
       }
 
@@ -484,20 +446,17 @@
         background: linear-gradient(135deg, #4f46e5, #7c3aed);
         color: #ffffff;
         border: none;
-        padding: 18px 32px;
-        border-radius: 15px;
-        font-size: 1.1rem;
-        font-weight: 700;
+        padding: 14px 20px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
         text-decoration: none;
         display: inline-block;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-        min-height: 56px;
-        position: relative;
-        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        min-height: 48px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
         box-sizing: border-box;
         -webkit-tap-highlight-color: transparent;
         touch-action: manipulation;
@@ -506,50 +465,13 @@
         appearance: none;
       }
 
-      .nav-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        transition: left 0.6s;
-      }
-
-      .nav-btn:hover::before {
-        left: 100%;
-      }
-
-      .nav-btn:hover {
-        transform: translateY(-4px) scale(1.05);
-        box-shadow: 0 12px 35px rgba(79, 70, 229, 0.5);
-        background: linear-gradient(135deg, #4338ca, #6d28d9);
-      }
-
       .nav-btn:active {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
-      }
-
-      /* Better touch feedback for mobile */
-      @media (hover: none) and (pointer: coarse) {
-        .nav-btn:hover {
-          transform: none;
-        }
-
-        .nav-btn:active {
-          transform: scale(0.98);
-          box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-        }
+        transform: scale(0.98);
+        box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
       }
 
       .nav-btn.secondary {
         background: linear-gradient(135deg, #6b7280, #4b5563);
-      }
-
-      .nav-btn.secondary:hover {
-        box-shadow: 0 10px 30px rgba(107, 114, 128, 0.3);
       }
 
       .error-message {
@@ -573,77 +495,71 @@
 
       /* Enhanced Biodata Comprehensive Styles */
       .biodata-comprehensive {
-        margin-top: 40px;
+        margin-top: 25px;
         position: relative;
       }
 
       .biodata-comprehensive::before {
         content: '';
         position: absolute;
-        top: -20px;
+        top: -15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #22c55e, #16a34a, #fbbf24, #f59e0b);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, #22c55e, #16a34a, #fbbf24);
         border-radius: 2px;
       }
 
       .biodata-header {
         text-align: center;
-        margin-bottom: 40px;
-        padding: 30px 25px;
-        background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.08));
-        border-radius: 20px;
-        border: 2px solid rgba(34, 197, 94, 0.3);
-        box-shadow: 0 8px 30px rgba(34, 197, 94, 0.2);
+        margin-bottom: 25px;
+        padding: 20px 15px;
+        background: rgba(34, 197, 94, 0.1);
+        border-radius: 15px;
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.1);
         position: relative;
-        overflow: hidden;
       }
 
       .biodata-header::before {
         content: '🎉';
         position: absolute;
         top: 10px;
-        right: 20px;
-        font-size: 2rem;
+        right: 15px;
+        font-size: 1.5rem;
         opacity: 0.6;
-        animation: celebrate 3s ease-in-out infinite;
       }
 
       .biodata-header h3 {
         color: #065f46;
-        font-size: 2.2rem;
-        margin-bottom: 15px;
-        font-weight: 800;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        line-height: 1.2;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+        line-height: 1.3;
       }
 
       .biodata-header p {
         color: #047857;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin: 0;
-        font-weight: 600;
+        font-weight: 500;
       }
 
       .biodata-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 25px;
-        margin-bottom: 40px;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
       }
 
       .biodata-item {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
-        backdrop-filter: blur(10px);
-        padding: 25px;
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         position: relative;
-        overflow: hidden;
       }
 
       .biodata-item::before {
@@ -654,219 +570,100 @@
         right: 0;
         height: 3px;
         background: linear-gradient(90deg, #22c55e, #16a34a);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .biodata-item:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.12));
-        border-color: rgba(255, 255, 255, 0.25);
-      }
-
-      .biodata-item:hover::before {
-        opacity: 1;
       }
 
       .biodata-label {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #4b5563;
-        font-weight: 700;
+        font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.8px;
-        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
         display: flex;
         align-items: center;
-        gap: 10px;
-        position: relative;
+        gap: 8px;
       }
 
       .biodata-label::after {
         content: '';
         position: absolute;
-        bottom: -5px;
+        bottom: -3px;
         left: 0;
-        width: 30px;
+        width: 25px;
         height: 2px;
         background: linear-gradient(90deg, #22c55e, #16a34a);
         border-radius: 1px;
       }
 
       .biodata-value {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: #1f2937;
-        font-weight: 800;
+        font-weight: 700;
         line-height: 1.4;
-        margin-top: 8px;
-        text-shadow: none;
+        margin-top: 5px;
       }
 
       .biodata-value[style*="color: #22c55e"] {
-        background: linear-gradient(135deg, #22c55e, #16a34a);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-size: 1.6rem;
+        color: #22c55e;
+        font-size: 1.3rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
       }
 
       .welcome-message {
-        margin-top: 40px;
-        padding: 35px 30px;
-        background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.08));
-        border-radius: 20px;
-        border: 2px solid rgba(251, 191, 36, 0.3);
-        box-shadow: 0 10px 35px rgba(251, 191, 36, 0.2);
+        margin-top: 25px;
+        padding: 20px 15px;
+        background: rgba(251, 191, 36, 0.1);
+        border-radius: 15px;
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.1);
         text-align: center;
         position: relative;
-        overflow: hidden;
       }
 
       .welcome-message::before {
         content: '🌟';
         position: absolute;
-        top: 15px;
-        left: 20px;
-        font-size: 1.5rem;
+        top: 10px;
+        left: 15px;
+        font-size: 1.2rem;
         opacity: 0.7;
       }
 
       .welcome-message::after {
         content: '🎊';
         position: absolute;
-        top: 15px;
-        right: 20px;
-        font-size: 1.5rem;
+        top: 10px;
+        right: 15px;
+        font-size: 1.2rem;
         opacity: 0.7;
       }
 
       .welcome-message h4 {
         color: #78350f;
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-        font-weight: 800;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        font-weight: 700;
         position: relative;
         z-index: 1;
       }
 
       .welcome-message p {
         color: #374151;
-        line-height: 1.7;
-        font-size: 1.1rem;
+        line-height: 1.6;
+        font-size: 1rem;
         margin: 0;
-        max-width: 700px;
-        margin: 0 auto;
         font-weight: 500;
         position: relative;
         z-index: 1;
       }
 
-      @keyframes celebrate {
-        0%, 100% {
-          transform: scale(1) rotate(0deg);
-          opacity: 0.6;
-        }
-        25% {
-          transform: scale(1.1) rotate(-5deg);
-          opacity: 0.8;
-        }
-        50% {
-          transform: scale(1.2) rotate(0deg);
-          opacity: 1;
-        }
-        75% {
-          transform: scale(1.1) rotate(5deg);
-          opacity: 0.8;
-        }
-      }
 
-      /* Large desktop screens */
-      @media (min-width: 1400px) {
+      /* Tablet and larger screens */
+      @media (min-width: 768px) {
         .container {
-          max-width: 1400px;
-          padding: 60px;
-        }
-
-        .header h1 {
-          font-size: 3.5rem;
-        }
-
-        .student-card {
-          padding: 60px;
-        }
-
-        .student-photo {
-          width: 200px;
-          height: 200px;
-        }
-
-        .student-name {
-          font-size: 3.2rem;
-        }
-
-        .info-section {
-          padding: 35px;
-        }
-      }
-
-      /* Medium desktop screens */
-      @media (min-width: 1200px) and (max-width: 1399px) {
-        .container {
-          max-width: 1300px;
-          padding: 50px;
-        }
-
-        .header h1 {
-          font-size: 3rem;
-        }
-
-        .student-card {
-          padding: 55px;
-        }
-
-        .student-photo {
-          width: 190px;
-          height: 190px;
-        }
-
-        .student-name {
-          font-size: 2.9rem;
-        }
-      }
-
-      /* Small desktop/tablet screens */
-      @media (min-width: 992px) and (max-width: 1199px) {
-        .container {
-          max-width: 1100px;
-          padding: 45px;
-        }
-
-        .header h1 {
-          font-size: 2.6rem;
-        }
-
-        .student-card {
-          padding: 50px;
-        }
-
-        .student-photo {
-          width: 180px;
-          height: 180px;
-        }
-
-        .student-name {
-          font-size: 2.5rem;
-        }
-      }
-
-      /* Tablet screens */
-      @media (min-width: 768px) and (max-width: 991px) {
-        .container {
-          max-width: 95%;
-          padding: 35px;
+          max-width: 600px;
+          padding: 30px;
         }
 
         .header h1 {
@@ -874,45 +671,7 @@
         }
 
         .student-card {
-          padding: 40px;
-        }
-
-        .student-photo {
-          width: 160px;
-          height: 160px;
-        }
-
-        .student-name {
-          font-size: 2.1rem;
-        }
-
-        .info-section {
-          padding: 25px;
-        }
-      }
-
-      /* Mobile landscape */
-      @media (max-width: 767px) and (orientation: landscape) {
-        .container {
-          padding: 15px;
-          margin: 10px auto;
-        }
-
-        .header {
-          margin-bottom: 30px;
-        }
-
-        .header h1 {
-          font-size: 1.8rem;
-          margin-bottom: 5px;
-        }
-
-        .header p {
-          font-size: 0.9rem;
-        }
-
-        .student-card {
-          padding: 30px 20px;
+          padding: 30px;
         }
 
         .student-photo {
@@ -921,228 +680,78 @@
         }
 
         .student-name {
-          font-size: 1.6rem;
-        }
-
-        .student-status {
-          font-size: 1.2rem;
-          padding: 12px 24px;
+          font-size: 2rem;
         }
 
         .info-section {
-          padding: 15px;
+          padding: 25px;
         }
 
-        .info-section h3 {
-          font-size: 1.1rem;
+        .biodata-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
         }
 
-        .nav-buttons {
-          flex-direction: column;
-          align-items: stretch;
-          gap: 12px;
-          margin-top: 30px;
+        .biodata-item {
+          padding: 25px;
         }
 
-        .nav-btn {
-          padding: 18px 20px;
-          font-size: 0.95rem;
-          width: 100%;
-          text-align: center;
-        }
-      }
-
-      /* Extra small mobile devices */
-      @media (max-width: 480px) {
-        .container {
-          padding: 10px;
-          margin: 5px auto;
-        }
-
-        .header h1 {
-          font-size: 1.5rem;
-        }
-
-        .student-card {
-          padding: 25px 15px;
-        }
-
-        .student-photo {
-          width: 120px;
-          height: 120px;
-        }
-
-        .student-name {
-          font-size: 1.4rem;
-        }
-
-        .student-status {
-          font-size: 1.1rem;
-          padding: 10px 20px;
-        }
-
-        .info-section {
-          padding: 12px;
-        }
-
-        .info-section h3 {
-          font-size: 1rem;
-        }
-
-        .nav-btn {
-          padding: 20px 16px;
-          font-size: 0.9rem;
-          min-height: 48px;
-        }
-      }
-
-      /* Very small Android screens */
-      @media (max-width: 360px) {
-        .container {
-          padding: 8px;
-          margin: 3px auto;
-          max-width: 95%;
-        }
-
-        .header {
-          margin-bottom: 20px;
-        }
-
-        .header h1 {
+        .biodata-value {
           font-size: 1.3rem;
         }
+      }
 
-        .header p {
-          font-size: 0.8rem;
+      /* Large screens */
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 700px;
         }
 
-        .student-card {
-          padding: 20px 12px;
-        }
-
-        .student-photo {
-          width: 100px;
-          height: 100px;
-          border-width: 3px;
-        }
-
-        .student-name {
-          font-size: 1.2rem;
-        }
-
-        .student-status {
-          font-size: 1rem;
-          padding: 8px 16px;
-        }
-
-        .info-section {
-          padding: 10px;
-          margin-bottom: 15px;
-        }
-
-        .info-section h3 {
-          font-size: 0.9rem;
-        }
-
-        .info-section p {
-          font-size: 0.9rem;
-        }
-
-        .congratulations,
-        .motivation {
-          padding: 15px;
-          margin-bottom: 20px;
-        }
-
-        .congratulations h3,
-        .motivation h3 {
-          font-size: 1.2rem;
-        }
-
-        .congratulations p,
-        .motivation p {
-          font-size: 1rem;
-        }
-
-        .nav-btn {
-          padding: 16px 14px;
-          font-size: 0.85rem;
-          min-height: 48px;
-          width: 100%;
-          margin-bottom: 0.5rem;
-        }
-
-        .error-message {
-          padding: 20px 15px;
-        }
-
-        .error-message h2 {
-          font-size: 1.5rem;
-        }
-
-        .error-message p {
-          font-size: 0.95rem;
+        .biodata-grid {
+          grid-template-columns: repeat(3, 1fr);
         }
       }
 
       /* Music Control Styles */
       #music-control {
         position: fixed;
-        top: 20px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
         z-index: 1000;
       }
 
       #music-btn {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.9);
         border: 2px solid #4f46e5;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
+        font-size: 16px;
         color: #4f46e5;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
 
-      #music-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
-        background: rgba(255, 255, 255, 1);
+      #music-btn:active {
+        transform: scale(0.95);
       }
 
       #music-btn.playing {
-        background: linear-gradient(135deg, #22c55e, #16a34a);
+        background: #22c55e;
         color: #ffffff;
         border-color: #16a34a;
-        animation: pulse 2s infinite;
       }
 
       #music-btn.muted {
-        background: linear-gradient(135deg, #ef4444, #dc2626);
+        background: #ef4444;
         color: #ffffff;
         border-color: #dc2626;
       }
 
       /* Mobile responsive for music control */
-      @media (max-width: 768px) {
-        #music-control {
-          top: 15px;
-          right: 15px;
-        }
-
-        #music-btn {
-          width: 45px;
-          height: 45px;
-          font-size: 16px;
-        }
-      }
-
       @media (max-width: 480px) {
         #music-control {
           top: 10px;
@@ -1164,6 +773,7 @@
       Your browser does not support the audio element.
     </audio>
 
+
     <div class="container">
       <div class="header">
         <h1>🎉 Detail Siswa</h1>
@@ -1174,9 +784,9 @@
           >
         </div>
         <div class="header-clock">
-          <div class="clock-title">🕐 Waktu Saat Ini</div>
-          <div class="clock-date" id="student-current-date"></div>
-          <div class="clock-time" id="student-current-time"></div>
+          <span class="clock-title">🕐 Waktu Saat Ini</span>
+          <span class="clock-date" id="student-current-date"></span>
+          <span class="clock-time" id="student-current-time"></span>
         </div>
       </div>
 
@@ -1269,104 +879,104 @@
           Object.assign(students, parsed);
         } else {
           students = {
-            TGC00001: { nama: "ASSYIFA ZEVANA ARWINI", status: "LULUS" },
-            TGC00002: { nama: "ABDUL HADI", status: "LULUS" },
-            TGC00003: { nama: "ADE NAFISAH RISKIA WIJAYANTI", status: "LULUS" },
-            TGC00004: { nama: "ADIKA GUNAWAN", status: "LULUS" },
-            TGC00005: { nama: "AFIQA RAMADHANI", status: "LULUS" },
-            TGC00006: { nama: "AISYAH HUMAIRAH", status: "LULUS" },
-            TGC00007: { nama: "ALIFA CAHAYA NIKITA", status: "LULUS" },
-            TGC00008: { nama: "ANDIKA PRASTIA EKA", status: "LULUS" },
-            TGC00009: { nama: "AQILA MUTIARA KENCANA", status: "LULUS" },
-            TGC00010: { nama: "AQILA SYARASIFA SATIA", status: "LULUS" },
-            TGC00011: { nama: "AULIA KHAIRUNNISA", status: "LULUS" },
-            TGC00012: { nama: "AZAHIRA JAUVA FANO", status: "LULUS" },
-            TGC00013: { nama: "AZARINE EDGINA WISONO", status: "LULUS" },
-            TGC00014: { nama: "CRISTIAN GUNAWAN IVONKOV", status: "LULUS" },
-            TGC00015: { nama: "DAFFA FARUREZI", status: "LULUS" },
-            TGC00016: { nama: "DAVIN CANVARO SIMBOLON", status: "LULUS" },
-            TGC00017: { nama: "DEA ANANDITA", status: "LULUS" },
-            TGC00018: { nama: "DHIKA ADITYAH", status: "LULUS" },
-            TGC00019: { nama: "DHIWA SYABIL ARSAKHA", status: "LULUS" },
-            TGC00020: { nama: "ELWIYA HARUM MURAWICA", status: "LULUS" },
-            TGC00021: { nama: "FAIZ SYAHZIQRO KUNAWI", status: "LULUS" },
-            TGC00022: { nama: "FANESYA WATIARINI", status: "LULUS" },
-            TGC00023: { nama: "FANI DWI OKTA VINDA", status: "LULUS" },
-            TGC00024: { nama: "FARADISYA KANZA RIZQINA", status: "LULUS" },
-            TGC00025: { nama: "FATIHAH ZHAFIRAH FALLAH", status: "LULUS" },
-            TGC00026: { nama: "FAZIRA NAYRA RAMADANI", status: "LULUS" },
-            TGC00027: { nama: "FIDORA HARIANI LAIA", status: "LULUS" },
-            TGC00028: { nama: "FIKRI RAHMAT HAKIM", status: "LULUS" },
-            TGC00029: { nama: "FRANSISKA AMANDA GISELLE SIM", status: "LULUS" },
-            TGC00030: { nama: "FRISTI HELLDY OKTAVIYANI", status: "LULUS" },
-            TGC00031: { nama: "GHARISSA ALMIRA ARIFIN", status: "LULUS" },
-            TGC00032: { nama: "GIVI LAUDYA QONITAH", status: "LULUS" },
-            TGC00033: { nama: "HAFSAH ZAIMAH HUSNAH", status: "LULUS" },
-            TGC00034: { nama: "IBRAHIM AL FHARIZIE", status: "LULUS" },
-            TGC00035: { nama: "INDAH PERMATA DEWI", status: "LULUS" },
-            TGC00036: { nama: "IRELAND AQILLA ALVAROZIQQY", status: "LULUS" },
-            TGC00037: { nama: "JASMINE ADZKHIA PUTRI", status: "LULUS" },
-            TGC00038: { nama: "JAUZAA", status: "LULUS" },
-            TGC00039: { nama: "KAZIRA ROFINA", status: "LULUS" },
-            TGC00040: { nama: "KAZURA ROFINI", status: "LULUS" },
-            TGC00041: { nama: "KEENAR AQILASYA QUINARA", status: "LULUS" },
-            TGC00042: { nama: "KEVIN AL FINO", status: "LULUS" },
-            TGC00043: { nama: "KEYLA AISYAH HENDRA", status: "LULUS" },
-            TGC00044: { nama: "KHAIRUNNISA SALSABILA", status: "LULUS" },
-            TGC00045: { nama: "KINDY RAZASSENTUSY ENDEE", status: "LULUS" },
-            TGC00046: { nama: "LUTHFI ARFA PRATAMA", status: "LULUS" },
-            TGC00047: { nama: "M. HAMIZAN IHSAN FADILLAH", status: "LULUS" },
-            TGC00048: { nama: "M. RIZKY BINTAN ZULIA PUTRA", status: "LULUS" },
-            TGC00049: { nama: "M.ANAIKIN SHAH DANISY", status: "LULUS" },
-            TGC00050: { nama: "M.SYAFIQ AKBHAR", status: "LULUS" },
-            TGC00051: { nama: "MAGHFIRA ZULIA BILQIS", status: "LULUS" },
-            TGC00052: { nama: "MARSHANDY WINATA", status: "LULUS" },
-            TGC00053: { nama: "MERRY CRYSMES", status: "LULUS" },
-            TGC00054: { nama: "MUHAMMAD AGIEL ALENDA", status: "LULUS" },
-            TGC00055: { nama: "MUHAMMAD JUNESA ILHAM", status: "LULUS" },
-            TGC00056: { nama: "MUHAMMAD RADIKA A.F", status: "LULUS" },
-            TGC00057: { nama: "MUTIARA ANGGARAINI PUTRI", status: "LULUS" },
-            TGC00058: { nama: "NADIA ALFIAH DIANTORO", status: "LULUS" },
-            TGC00059: { nama: "NAILA PUTRI DWIMA", status: "LULUS" },
-            TGC00060: { nama: "NAQURA TEJA CANTIDHARMA", status: "LULUS" },
-            TGC00061: { nama: "NAUFAL FAKHRUL ALFARISI", status: "LULUS" },
-            TGC00062: { nama: "NAYLA AZZAHRA LYOVA", status: "LULUS" },
-            TGC00063: { nama: "NHELIA RAHMADINA", status: "LULUS" },
-            TGC00064: { nama: "NIKEN AYU", status: "LULUS" },
-            TGC00065: { nama: "NOVELITA", status: "LULUS" },
-            TGC00066: { nama: "NUR ADILLAH", status: "LULUS" },
-            TGC00067: { nama: "NUR ALISA", status: "LULUS" },
-            TGC00068: { nama: "NURFADILLAH PRATIWI", status: "LULUS" },
-            TGC00069: { nama: "NURYANABELLA", status: "LULUS" },
-            TGC00070: { nama: "PINKY AYU WULANDARI", status: "LULUS" },
-            TGC00071: { nama: "PUTRI NIZA HAYATI", status: "LULUS" },
-            TGC00072: { nama: "QUEENI GLADYS RIAUFANI", status: "LULUS" },
-            TGC00073: { nama: "RADHITYA JAVAS ANGGARA", status: "LULUS" },
-            TGC00074: { nama: "RADISTY PUTRI ANINDYA", status: "LULUS" },
-            TGC00075: { nama: "RAHIM HAMZAH HARAHAP", status: "LULUS" },
-            TGC00076: { nama: "RAHMAN HAMZAH HARAHAP", status: "LULUS" },
-            TGC00077: { nama: "RAHSYAIDINA PANJAITAN", status: "LULUS" },
-            TGC00078: { nama: "RAINNESHA", status: "LULUS" },
-            TGC00079: { nama: "RAISSA ALYA SAFIQHA", status: "LULUS" },
-            TGC00080: { nama: "RANGGA WICAKSANA", status: "LULUS" },
-            TGC00081: { nama: "RAYLA NABILA ALIANY", status: "LULUS" },
-            TGC00082: { nama: "SALWA RAHMATUN NAZILA", status: "LULUS" },
-            TGC00083: { nama: "SEKAR WIDIYA", status: "LULUS" },
-            TGC00084: { nama: "SETIAWAN ADE SAPUTRA", status: "LULUS" },
-            TGC00085: { nama: "SHAFIRA AZZAHRA PUTRI", status: "LULUS" },
-            TGC00086: { nama: "SHALSABILLA", status: "LULUS" },
-            TGC00087: { nama: "SHEANANDRAKARELLINA", status: "LULUS" },
-            TGC00088: { nama: "SITI RAEESA RAMAPUTRI", status: "LULUS" },
-            TGC00089: { nama: "SYARIFAH ADYA SHAVA", status: "LULUS" },
-            TGC00090: { nama: "THARIQ DZAKI AKRAM", status: "LULUS" },
-            TGC00091: { nama: "TIFANIA TAMA", status: "LULUS" },
-            TGC00092: { nama: "TRI ALTA OKTO SYAHPUTRA", status: "LULUS" },
-            TGC00093: { nama: "VANILLA SASHA ALVIOLETA", status: "LULUS" },
-            TGC00094: { nama: "WAN GUSTI FITRA ARB'INNURRIZ", status: "LULUS" },
-            TGC00095: { nama: "WIYOLA EVELLIN UTAMI", status: "LULUS" },
-            TGC00096: { nama: "YHARA PRIAYU ANDITA", status: "LULUS" },
-            TGC00097: { nama: "YOWELLANANDA", status: "LULUS" },
-            TGC00098: { nama: "YUZAL ZAHRA SALSA BILA", status: "LULUS" },
+           TGC00001: { nama: "ASSYIFA ZEVANA ARWINI", status: "LULUS" },
+            TGC00002: { nama: "NIKEN AYU", status: "LULUS" },
+            TGC00003: { nama: "M. HAMIZAN IHSAN FADILLAH", status: "LULUS" },
+            TGC00004: { nama: "FATIHAH ZHAFIRAH FALLAH", status: "LULUS" },
+            TGC00005: { nama: "KEYLA AISYAH HENDRA", status: "LULUS" },
+            TGC00006: { nama: "DAVIN CANVARO SIMBOLON", status: "LULUS" },
+            TGC00007: { nama: "SETIAWAN ADE SAPUTRA", status: "TIDAK LULUS" },
+            TGC00008: { nama: "SALWA RAHMATUN NAZILA", status: "LULUS" },
+            TGC00009: { nama: "KEVIN AL FINO", status: "LULUS" },
+            TGC00010: { nama: "AZARINE EDGINA WISONO", status: "LULUS" },
+            TGC00011: { nama: "RAHSYAIDINA PANJAITAN", status: "LULUS" },
+            TGC00012: { nama: "SHAFIRA AZZAHRA PUTRI", status: "LULUS" },
+            TGC00013: { nama: "SITI RAEESA RAMAPUTRI", status: "LULUS" },
+            TGC00014: { nama: "SHEANANDRAKARELLINA", status: "LULUS" },
+            TGC00015: { nama: "MUTIARA ANGGARAINI PUTRI", status: "LULUS" },
+            TGC00016: { nama: "MUHAMMAD RADIKA A.F", status: "LULUS" },
+            TGC00017: { nama: "LUTHFI ARFA PRATAMA", status: "LULUS" },
+            TGC00018: { nama: "PINKY AYU WULANDARI", status: "LULUS" },
+            TGC00019: { nama: "FAZIRA NAYRA RAMADANI", status: "LULUS" },
+            TGC00020: { nama: "INDAH PERMATA DEWI", status: "TIDAK LULUS" },
+            TGC00021: { nama: "M.SYAFIQ AKBHAR", status: "LULUS" },
+            TGC00022: { nama: "TRI ALTA OKTO SYAHPUTRA", status: "LULUS" },
+            TGC00023: { nama: "M.ANAIKIN SHAH DANISY", status: "TIDAK LULUS" },
+            TGC00024: { nama: "MARSHANDY WINATA", status: "TIDAK LULUS" },
+            TGC00025: { nama: "SEKAR WIDIYA", status: "TIDAK LULUS" },
+            TGC00026: { nama: "HAFSAH ZAIMAH HUSNAH", status: "LULUS" },
+            TGC00027: { nama: "KAZURA ROFINI", status: "LULUS" },
+            TGC00028: { nama: "KINDY RAZASSENTUSY ENDEE", status: "LULUS" },
+            TGC00029: { nama: "NHELIA RAHMADINA", status: "TIDAK LULUS" },
+            TGC00030: { nama: "DEA ANANDITA", status: "LULUS" },
+            TGC00031: { nama: "IRELAND AQILLA ALVAROZIQQY", status: "TIDAK LULUS" },
+            TGC00032: { nama: "YHARA PRIAYU ANDITA", status: "TIDAK LULUS" },
+            TGC00033: { nama: "FAIZ SYAHZIQRO KUNAWI", status: "LULUS" },
+            TGC00034: { nama: "RADISTY PUTRI ANINDYA", status: "LULUS" },
+            TGC00035: { nama: "ELWIYA HARUM MURAWICA", status: "LULUS" },
+            TGC00036: { nama: "KEENAR AQILASYA QUINARA", status: "TIDAK LULUS" },
+            TGC00037: { nama: "PUTRI NIZA HAYATI", status: "LULUS" },
+            TGC00038: { nama: "KHAIRUNNISA SALSABILA", status: "LULUS" },
+            TGC00039: { nama: "VANILLA SASHA ALVIOLETA", status: "TIDAK LULUS" },
+            TGC00040: { nama: "MUHAMMAD AGIEL ALENDA", status: "LULUS" },
+            TGC00041: { nama: "JASMINE ADZKHIA PUTRI", status: "LULUS" },
+            TGC00042: { nama: "AQILA SYARASIFA SATIA", status: "LULUS" },
+            TGC00043: { nama: "MAGHFIRA ZULIA BILQIS", status: "LULUS" },
+            TGC00044: { nama: "KAZIRA ROFINA", status: "LULUS" },
+            TGC00045: { nama: "RAHMAN HAMZAH HARAHAP", status: "LULUS" },
+            TGC00046: { nama: "FIDORA HARIANI LAIA", status: "TIDAK LULUS" },
+            TGC00047: { nama: "FRANSISKA AMANDA GISELLE SIM", status: "TIDAK LULUS" },
+            TGC00048: { nama: "ADE NAFISAH RISKIA WIJAYANTI", status: "LULUS" },
+            TGC00049: { nama: "YOWELLANANDA", status: "LULUS" },
+            TGC00050: { nama: "RANGGA WICAKSANA", status: "LULUS" },
+            TGC00051: { nama: "THARIQ DZAKI AKRAM", status: "LULUS" },
+            TGC00052: { nama: "AULIA KHAIRUNNISA", status: "TIDAK LULUS" },
+            TGC00053: { nama: "FIKRI RAHMAT HAKIM", status: "LULUS" },
+            TGC00054: { nama: "FARADISYA KANZA RIZQINA", status: "LULUS" },
+            TGC00055: { nama: "NOVELITA", status: "LULUS" },
+            TGC00056: { nama: "NAQURA TEJA CANTIDHARMA", status: "LULUS" },
+            TGC00057: { nama: "NUR ADILLAH", status: "LULUS" },
+            TGC00058: { nama: "GIVI LAUDYA QONITAH", status: "LULUS" },
+            TGC00059: { nama: "RAISSA ALYA SAFIQHA", status: "LULUS" },
+            TGC00060: { nama: "WIYOLA EVELLIN UTAMI", status: "TIDAK LULUS" },
+            TGC00061: { nama: "YUZAL ZAHRA SALSA BILA", status: "LULUS" },
+            TGC00062: { nama: "GHARISSA ALMIRA ARIFIN", status: "LULUS" },
+            TGC00063: { nama: "NURYANABELLA", status: "TIDAK LULUS" },
+            TGC00064: { nama: "NAUFAL FAKHRUL ALFARISI", status: "LULUS" },
+            TGC00065: { nama: "AISYAH HUMAIRAH", status: "LULUS" },
+            TGC00066: { nama: "RAHIM HAMZAH HARAHAP", status: "LULUS" },
+            TGC00067: { nama: "ALIFA CAHAYA NIKITA", status: "LULUS" },
+            TGC00068: { nama: "DHIKA ADITYAH", status: "LULUS" },
+            TGC00069: { nama: "SYARIFAH ADYA SHAVA", status: "LULUS" },
+            TGC00070: { nama: "NAYLA AZZAHRA LYOVA", status: "LULUS" },
+            TGC00071: { nama: "NADIA ALFIAH DIANTORO", status: "LULUS" },
+            TGC00072: { nama: "IBRAHIM AL FHARIZIE", status: "LULUS" },
+            TGC00073: { nama: "QUEENI GLADYS RIAUFANI", status: "LULUS" },
+            TGC00074: { nama: "AFIQA RAMADHANI", status: "LULUS" },
+            TGC00075: { nama: "JAUZAA", status: "LULUS" },
+            TGC00076: { nama: "RADHITYA JAVAS ANGGARA", status: "LULUS" },
+            TGC00077: { nama: "WAN GUSTI FITRA ARB'INNURRIZ", status: "LULUS" },
+            TGC00078: { nama: "M. RIZKY BINTAN ZULIA PUTRA", status: "LULUS" },
+            TGC00079: { nama: "DHIWA SYABIL ARSAKHA", status: "LULUS" },
+            TGC00080: { nama: "CRISTIAN GUNAWAN IVONKOV", status: "LULUS" },
+            TGC00081: { nama: "RAINNESHA", status: "LULUS" },
+            TGC00082: { nama: "MUHAMMAD JUNESA ILHAM", status: "LULUS" },
+            TGC00083: { nama: "AQILA MUTIARA KENCANA", status: "LULUS" },
+            TGC00084: { nama: "FANESYA WATIARINI", status: "LULUS" },
+            TGC00085: { nama: "DAFFA FARUREZI", status: "TIDAK LULUS" },
+            TGC00086: { nama: "NUR ALISA", status: "LULUS" },
+            TGC00087: { nama: "RAYLA NABILA ALIANY", status: "TIDAK LULUS" },
+            TGC00088: { nama: "ADIKA GUNAWAN", status: "LULUS" },
+            TGC00089: { nama: "AZAHIRA JAUVA FANO", status: "LULUS" },
+            TGC00090: { nama: "ANDIKA PRASTIA EKA", status: "LULUS" },
+            TGC00091: { nama: "TIFANIA TAMA", status: "TIDAK LULUS" },
+            TGC00092: { nama: "FANI DWI OKTA VINDA", status: "LULUS" },
+            TGC00093: { nama: "MERRY CRYSMES", status: "LULUS" },
+            TGC00094: { nama: "FRISTI HELLDY OKTAVIYANI", status: "TIDAK LULUS" },
+            TGC00095: { nama: "NURFADILLAH PRATIWI", status: "TIDAK LULUS" },
+            TGC00096: { nama: "SHALSABILLA", status: "LULUS" },
+            TGC00097: { nama: "NAILA PUTRI DWIMA", status: "LULUS" },
+            TGC00098: { nama: "ABDUL HADI", status: "LULUS" },
             TGC00099: { nama: "AZUMI RAMADHANI", status: "LULUS" },
             TGC00100: { nama: "KEYZA KARELLINA", status: "LULUS" },
             TGC00101: { nama: "HAYRA FATIKA SARI", status: "LULUS" },
@@ -1516,11 +1126,7 @@
           idPeserta: student.id,
           status: student.status,
           angkatan: "Tunas Gurindam Corps Akt 7 2025/2026",
-          tanggalKelulusan: new Date().toLocaleDateString('id-ID', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-          }),
+          tanggalKelulusan: "24 September 2025",
           keterangan: keterangan,
           tanggalLabel: tanggalLabel
         };
@@ -1623,8 +1229,8 @@
 
             <div class="info-section">
               <h3>📅 Informasi Penting</h3>
-              <p><strong>Tanggal Pengumuman:</strong> 8 September 2025</p>
-              <p><strong>Waktu:</strong> 21:55 WIB</p>
+              <p><strong>Tanggal Pengumuman:</strong> 24 September 2025</p>
+              <p><strong>Waktu:</strong> 19:00 WIB</p>
               <p><strong>Lokasi:</strong> Sekretariat Tunas Gurindam Corps</p>
             </div>
           </div>
