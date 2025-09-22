@@ -474,6 +474,39 @@
         }
       }
 
+      /* Mobile performance optimizations */
+      @media (max-width: 768px) {
+        body {
+          background-attachment: scroll;
+        }
+
+        .container {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .logo-circle {
+          animation: none;
+        }
+
+        h1 {
+          animation: none;
+        }
+
+        button,
+        a {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          animation: none;
+        }
+
+        /* Force hardware acceleration */
+        * {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+      }
+
       /* Loading animation for form submission */
       .loading {
         position: relative;
@@ -506,7 +539,7 @@
   </head>
   <body>
     <!-- Background Music -->
-    <audio id="bg-music" autoplay loop preload="auto" style="display: none;">
+    <audio id="bg-music" autoplay loop preload="metadata" style="display: none;">
       <source src="ROYALTY FREE Awards Background Music Nomination Royalty Free Music Awards Royalty Free Music.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
@@ -518,6 +551,7 @@
           src="242104513_266398215333645_4612524844173446882_n.jpg"
           alt="Logo TGC"
           class="logo-image"
+          loading="lazy"
         />
       </div>
       <h1>🎓 Cek Status Kelulusan</h1>

@@ -856,11 +856,55 @@
           padding: 15px;
         }
       }
+
+      /* Mobile performance optimizations */
+      @media (max-width: 768px) {
+        body {
+          background-attachment: scroll;
+        }
+
+        .container {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .form-section,
+        .list-section {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .header h1 {
+          animation: none;
+        }
+
+        .nav-btn {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          animation: none;
+        }
+
+        .btn {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .student-table {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        /* Force hardware acceleration */
+        * {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+      }
     </style>
   </head>
   <body>
     <!-- Background Music -->
-    <audio id="bg-music" autoplay loop preload="auto" style="display: none">
+    <audio id="bg-music" autoplay loop preload="metadata" style="display: none">
       <source src="" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>

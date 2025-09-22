@@ -1345,6 +1345,10 @@
         /* Mobile performance optimizations */
         @media (max-width: 768px) {
             /* Reduce animation complexity on mobile */
+            body {
+                background-attachment: scroll; /* Faster scrolling */
+            }
+
             body::before {
                 animation: none; /* Disable floating background animation */
             }
@@ -1357,20 +1361,28 @@
                 display: none; /* Hide particle effects */
             }
 
+            .logo-circle {
+                animation: none; /* Disable logo animations */
+            }
+
             .logo-circle::before,
             .logo-circle::after {
                 animation: none; /* Disable logo ring animations */
+            }
+
+            .container {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                animation: none;
+                will-change: auto; /* Remove will-change for performance */
             }
 
             .container::after {
                 animation: none; /* Disable rotating border */
             }
 
-            /* Simplify container glow */
-            .container {
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                animation: none;
+            h1 {
+                animation: none; /* Disable title animations */
             }
 
             /* Reduce button effects */
@@ -1378,6 +1390,7 @@
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
                 animation: none;
+                will-change: auto;
             }
 
             a::before,
@@ -1386,7 +1399,15 @@
             }
 
             /* Simplify countdown effects */
+            .countdown-container {
+                animation: none;
+            }
+
             .countdown-container::before {
+                animation: none;
+            }
+
+            .time-unit {
                 animation: none;
             }
 
@@ -1395,12 +1416,22 @@
             }
 
             /* Disable clock glow */
+            .clock-container {
+                animation: none;
+            }
+
             .clock-container::after {
                 animation: none;
             }
 
             #current-time {
                 animation: none;
+            }
+
+            /* Force hardware acceleration for smoother scrolling */
+            * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
             }
         }
     </style>

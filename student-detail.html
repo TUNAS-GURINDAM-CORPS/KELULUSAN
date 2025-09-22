@@ -712,6 +712,62 @@
         }
       }
 
+      /* Mobile performance optimizations */
+      @media (max-width: 768px) {
+        body {
+          background-attachment: scroll;
+        }
+
+        .container {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .student-card {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .info-section {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .biodata-item {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .welcome-message {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .nav-btn {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          animation: none;
+        }
+
+        .logo-circle {
+          animation: none;
+        }
+
+        h1 {
+          animation: none;
+        }
+
+        .header-clock {
+          animation: none;
+        }
+
+        /* Force hardware acceleration */
+        * {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+      }
+
       /* Music Control Styles */
       #music-control {
         position: fixed;
@@ -768,7 +824,7 @@
   </head>
   <body>
     <!-- Background Music -->
-    <audio id="bg-music" autoplay loop preload="auto" style="display: none;">
+    <audio id="bg-music" autoplay loop preload="metadata" style="display: none;">
       <source src="Awarding Background Music for Nomination Show and Ceremony Opening.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
