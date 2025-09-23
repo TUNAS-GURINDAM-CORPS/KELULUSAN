@@ -1434,6 +1434,222 @@
                 transform: translateZ(0);
             }
         }
+
+        /* Enhanced mobile responsiveness for Android and iOS */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px 5px;
+                min-height: 100vh;
+                height: auto;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+                margin: 0.5rem auto;
+                border-radius: 12px;
+                max-width: 95%;
+            }
+
+            .logo-circle {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 1rem;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.3;
+            }
+
+            .clock-container {
+                padding: 0.4rem 0.8rem;
+                margin: 0.5rem 0;
+                border-radius: 8px;
+                gap: 0.5rem;
+            }
+
+            .clock-container #current-date {
+                font-size: 0.7rem;
+            }
+
+            .clock-container #current-time {
+                font-size: 1rem;
+                padding: 0.3rem 0.5rem;
+                border-radius: 6px;
+            }
+
+            .countdown-container {
+                padding: 0.8rem;
+                margin: 0.8rem 0;
+                border-radius: 8px;
+            }
+
+            .countdown-title {
+                font-size: 0.9rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .countdown-timer {
+                gap: 0.4rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .time-unit {
+                min-width: 45px;
+                padding: 0.5rem 0.3rem;
+                border-radius: 6px;
+            }
+
+            .time-value {
+                font-size: 1rem;
+            }
+
+            .time-label {
+                font-size: 0.5rem;
+                margin-top: 0.2rem;
+                padding: 0.1rem 0.2rem;
+            }
+
+            .links {
+                gap: 0.8rem;
+                margin-top: 0.5rem;
+            }
+
+            a {
+                padding: 0.8rem 1.5rem;
+                min-width: 160px;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+
+            .ip-container {
+                padding: 0.3rem 0.6rem;
+                margin: 0.3rem 0;
+                border-radius: 6px;
+                gap: 0.3rem;
+            }
+
+            .ip-container span:first-child {
+                font-size: 0.6rem;
+            }
+
+            .ip-container span:nth-child(2) {
+                font-size: 0.8rem;
+                padding: 0.1rem 0.25rem;
+            }
+        }
+
+        /* iOS specific optimizations */
+        @supports (-webkit-touch-callout: none) {
+            .container {
+                -webkit-user-select: none;
+                -webkit-touch-callout: none;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            }
+
+            a {
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Android specific optimizations */
+        @media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5) {
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .container {
+                transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+        }
+
+        /* Landscape orientation for mobile */
+        @media (max-width: 767px) and (orientation: landscape) {
+            body {
+                padding: 8px 5px;
+            }
+
+            .container {
+                padding: 1rem 0.8rem;
+                margin: 0.3rem auto;
+                max-width: 95%;
+            }
+
+            .logo-circle {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .clock-container {
+                padding: 0.3rem 0.6rem;
+                margin: 0.3rem 0;
+                gap: 0.4rem;
+            }
+
+            .clock-container #current-date {
+                font-size: 0.6rem;
+            }
+
+            .clock-container #current-time {
+                font-size: 0.9rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .countdown-container {
+                padding: 0.6rem;
+                margin: 0.6rem 0;
+            }
+
+            .countdown-timer {
+                gap: 0.3rem;
+            }
+
+            .time-unit {
+                min-width: 40px;
+                padding: 0.4rem 0.25rem;
+            }
+
+            .time-value {
+                font-size: 0.9rem;
+            }
+
+            .time-label {
+                font-size: 0.45rem;
+                margin-top: 0.15rem;
+                padding: 0.08rem 0.15rem;
+            }
+
+            a {
+                padding: 0.6rem 1.2rem;
+                min-width: 140px;
+                font-size: 0.8rem;
+            }
+
+            .ip-container {
+                padding: 0.25rem 0.5rem;
+                margin: 0.25rem 0;
+                gap: 0.25rem;
+            }
+
+            .ip-container span:first-child {
+                font-size: 0.55rem;
+            }
+
+            .ip-container span:nth-child(2) {
+                font-size: 0.75rem;
+                padding: 0.08rem 0.2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1565,8 +1781,8 @@
             if (saved) {
                 releaseDate = new Date(saved);
             } else {
-                // No release date set, set to 24 September 2025 at 19:15
-                releaseDate = new Date('2025-09-24T19:15:00+07:00');
+                // No release date set, set to 24 September 2025 at 19:05
+                releaseDate = new Date('2025-09-24T19:05:00+07:00');
                 localStorage.setItem("tunasGurindamReleaseDate", releaseDate.toISOString());
             }
             updateCountdownDisplay();
@@ -1887,7 +2103,6 @@
     </script>
 </body>
 </html>
-
 
 
 
